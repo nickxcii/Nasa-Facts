@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Space Explorer - Facts & Photos</title>
+    <meta name="description" content="Explore the universe with NASA's daily astronomy pictures, space facts, and interactive gallery. Discover the wonders of space through stunning imagery and educational content.">
+    <meta name="keywords" content="NASA, space, astronomy, APOD, space facts, galaxy, universe, planets, stars">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-rocket"></i>
+                <span>NASA Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#facts" class="nav-link">Space Facts</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="text-glow">NASA Space Explorer</span>
+            </h1>
+            <p class="hero-subtitle">Discover the wonders of the universe through NASA's eyes</p>
+            <button class="cta-button" onclick="scrollToSection('facts')">
+                <i class="fas fa-star"></i>
+                Explore Space Facts
+            </button>
+        </div>
+        
+        <!-- Astronomy Picture of the Day -->
+        <div class="apod-container">
+            <div class="apod-card">
+                <div class="loading-spinner" id="apod-loading">
+                    <i class="fas fa-satellite-dish fa-spin"></i>
+                    <p>Loading today's cosmic wonder...</p>
+                </div>
+                <div id="apod-content" class="apod-content" style="display: none;">
+                    <img id="apod-image" alt="Astronomy Picture of the Day" />
+                    <div class="apod-info">
+                        <h3 id="apod-title"></h3>
+                        <p id="apod-date"></p>
+                        <p id="apod-explanation"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Space Facts Section -->
+    <section id="facts" class="facts-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-atom"></i>
+                Space Facts Generator
+            </h2>
+            
+            <div class="facts-generator">
+                <button id="generate-fact" class="generate-btn">
+                    <i class="fas fa-magic"></i>
+                    Generate Space Fact
+                </button>
+                
+                <div id="fact-card" class="fact-card" style="display: none;">
+                    <div class="fact-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p id="fact-text"></p>
+                        <div class="fact-source">
+                            <i class="fas fa-satellite"></i>
+                            <span>NASA Space Facts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fas fa-telescope"></i>
+                    <h3>Explore</h3>
+                    <p>Discover amazing facts about space, planets, and the universe</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Capture</h3>
+                    <p>View stunning images from NASA's daily astronomy picture collection</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Learn</h3>
+                    <p>Expand your knowledge with scientifically accurate space information</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-images"></i>
+                Photo Gallery
+            </h2>
+            
+            <div class="gallery-controls">
+                <div class="date-selector">
+                    <label for="gallery-date">Select Date:</label>
+                    <input type="date" id="gallery-date" max="" />
+                    <button id="load-date" class="load-btn">
+                        <i class="fas fa-search"></i>
+                        Load Photo
+                    </button>
+                </div>
+                
+                <div class="gallery-navigation">
+                    <button id="prev-photo" class="nav-btn">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button id="next-photo" class="nav-btn">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="loading-spinner" id="gallery-loading">
+                    <i class="fas fa-satellite-dish fa-spin"></i>
+                    <p>Loading gallery...</p>
+                </div>
+            </div>
+
+            <!-- Modal for enlarged images -->
+            <div id="image-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <img id="modal-image" alt="">
+                    <div class="modal-info">
+                        <h3 id="modal-title"></h3>
+                        <p id="modal-date"></p>
+                        <p id="modal-explanation"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NASA Space Explorer</h3>
+                    <p>Bringing the cosmos closer to you through NASA's incredible data and imagery.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#facts">Space Facts</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Data Source</h4>
+                    <p>All images and data provided by <a href="https://nasa.gov" target="_blank">NASA</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NASA Space Explorer. Educational project using NASA's open API.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
